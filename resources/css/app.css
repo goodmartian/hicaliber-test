@@ -1,0 +1,276 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.vue';
+
+:root {
+    --el-color-primary: #2d2d2d;
+    --el-color-primary-light-3: #5a5a5a;
+    --el-color-primary-light-5: #7a7a7a;
+    --el-color-primary-light-7: #a0a0a0;
+    --el-color-primary-light-8: #c0c0c0;
+    --el-color-primary-light-9: #e0e0e0;
+    --el-color-primary-dark-2: #1a1a1a;
+
+    --el-color-success: #67c23a;
+    --el-color-warning: #e6a23c;
+    --el-color-danger: #f56c6c;
+    --el-color-info: #8a8580;
+
+    --el-text-color-primary: #2d2d2d;
+    --el-text-color-regular: #4a4a4a;
+    --el-text-color-secondary: #8a8580;
+    --el-text-color-placeholder: #8a8580;
+
+    --el-bg-color: #ffffff;
+    --el-bg-color-page: #faf9f7;
+    --el-bg-color-overlay: #ffffff;
+
+    --el-border-color: #e8e4de;
+    --el-border-color-light: #f5f3ef;
+    --el-border-color-lighter: #faf9f7;
+    --el-border-color-dark: #d4cfc5;
+
+    --el-fill-color: #f5f3ef;
+    --el-fill-color-light: #faf9f7;
+    --el-fill-color-lighter: #fdfcfa;
+    --el-fill-color-blank: #ffffff;
+
+    --el-font-family: 'DM Sans', system-ui, sans-serif;
+    --el-font-size-extra-small: 12px;
+    --el-font-size-small: 13px;
+    --el-font-size-base: 14px;
+    --el-font-size-medium: 16px;
+    --el-font-size-large: 18px;
+    --el-font-size-extra-large: 20px;
+
+    --el-border-radius-base: 0;
+    --el-border-radius-small: 0;
+    --el-border-radius-round: 0;
+    --el-border-radius-circle: 0;
+
+    --el-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(0, 0, 0, 0.04);
+    --el-box-shadow-light: 0 1px 2px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 0, 0, 0.03);
+
+    --el-input-border-radius: 0;
+    --el-input-border-color: #e8e4de;
+    --el-input-hover-border-color: #8a8580;
+    --el-input-focus-border-color: #c4a77d;
+    --el-input-bg-color: #ffffff;
+    --el-input-text-color: #2d2d2d;
+    --el-input-placeholder-color: #8a8580;
+
+    --el-select-border-color-hover: #8a8580;
+    --el-select-input-focus-border-color: #c4a77d;
+
+    --el-button-border-radius: 0;
+
+    --el-tag-border-radius: 0;
+
+    --el-card-border-radius: 0;
+
+    --el-table-border-color: #f5f3ef;
+    --el-table-header-bg-color: #f5f3ef;
+    --el-table-row-hover-bg-color: #faf9f7;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+
+    --color-cream: #faf9f7;
+    --color-stone: #f5f3ef;
+    --color-warm-gray: #e8e4de;
+    --color-charcoal: #2d2d2d;
+    --color-graphite: #4a4a4a;
+    --color-muted: #8a8580;
+    --color-accent: #c4a77d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--el-font-family), serif;
+    background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-stone) 100%);
+    min-height: 100vh;
+    color: var(--el-text-color-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--el-fill-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--el-border-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--el-text-color-secondary);
+}
+
+.price-cell {
+    font-family: var(--font-display), serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--el-text-color-primary);
+}
+
+.property-name {
+    font-family: var(--font-display), serif;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--el-text-color-primary);
+    transition: color 0.2s ease;
+}
+
+.property-name:hover {
+    color: var(--color-accent);
+}
+
+.el-button {
+    border-radius: 0 !important;
+}
+
+.el-button--primary {
+    --el-button-bg-color: #2d2d2d !important;
+    --el-button-border-color: #2d2d2d !important;
+    --el-button-hover-bg-color: #c4a77d !important;
+    --el-button-hover-border-color: #c4a77d !important;
+    --el-button-active-bg-color: #a68b5b !important;
+    --el-button-active-border-color: #a68b5b !important;
+    background-color: #2d2d2d !important;
+    border-color: #2d2d2d !important;
+}
+
+.el-button--primary:hover,
+.el-button--primary:focus {
+    background-color: #c4a77d !important;
+    border-color: #c4a77d !important;
+}
+
+.el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--warning):not(.el-button--danger):not(.el-button--info) {
+    --el-button-text-color: #8a8580 !important;
+    --el-button-border-color: #e8e4de !important;
+    --el-button-bg-color: transparent !important;
+    --el-button-hover-text-color: #2d2d2d !important;
+    --el-button-hover-border-color: #2d2d2d !important;
+    --el-button-hover-bg-color: transparent !important;
+    color: #8a8580 !important;
+    border-color: #e8e4de !important;
+    background-color: transparent !important;
+}
+
+.el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--warning):not(.el-button--danger):not(.el-button--info):hover,
+.el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--warning):not(.el-button--danger):not(.el-button--info):focus,
+.el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--warning):not(.el-button--danger):not(.el-button--info):active,
+.el-button.is-plain:hover,
+.el-button.is-plain:focus {
+    color: #2d2d2d !important;
+    border-color: #2d2d2d !important;
+    background-color: transparent !important;
+}
+
+.el-button--default,
+.el-button.is-plain {
+    color: #8a8580 !important;
+    border-color: #e8e4de !important;
+    background-color: transparent !important;
+}
+
+.el-button--default:hover,
+.el-button--default:focus,
+.el-button--default:active,
+.el-button--default.is-active {
+    color: #2d2d2d !important;
+    border-color: #2d2d2d !important;
+    background-color: transparent !important;
+}
+
+.el-input__wrapper,
+.el-select__wrapper,
+.el-textarea__inner {
+    border-radius: 0 !important;
+    box-shadow: 0 0 0 1px #e8e4de inset !important;
+}
+
+.el-input__wrapper:hover,
+.el-select__wrapper:hover,
+.el-textarea__inner:hover {
+    box-shadow: 0 0 0 1px #8a8580 inset !important;
+}
+
+.el-input__wrapper:focus-within,
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused,
+.el-select__wrapper:focus-within,
+.el-textarea__inner:focus {
+    box-shadow: 0 0 0 1px #c4a77d inset !important;
+}
+
+.el-select .el-input.is-focus .el-input__wrapper {
+    box-shadow: 0 0 0 1px #c4a77d inset !important;
+}
+
+.el-tag {
+    border-radius: 0 !important;
+    --el-tag-border-color: transparent !important;
+    --el-tag-bg-color: #f5f3ef !important;
+    --el-tag-text-color: #4a4a4a !important;
+    background-color: #f5f3ef !important;
+    border-color: transparent !important;
+    color: #4a4a4a !important;
+}
+
+.el-tag--info {
+    --el-tag-border-color: transparent !important;
+    --el-tag-bg-color: #f5f3ef !important;
+    --el-tag-text-color: #8a8580 !important;
+    background-color: #f5f3ef !important;
+    border-color: transparent !important;
+    color: #8a8580 !important;
+}
+
+.el-card {
+    border-radius: 0 !important;
+}
+
+.el-select-dropdown__item.is-selected {
+    color: #c4a77d !important;
+}
+
+.el-loading-spinner .path {
+    stroke: #c4a77d !important;
+}
